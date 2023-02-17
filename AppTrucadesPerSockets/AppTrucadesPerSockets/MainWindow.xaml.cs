@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AppTrucadesPerSockets.View;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,17 @@ namespace AppTrucadesPerSockets
         public MainWindow()
         {
             InitializeComponent();
+            _mainFrame.Navigate(new HomePage());
+            
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            /*SettingsWindow window = new SettingsWindow();
+            window.Show();
+            window.Activate();*/
+
+            _mainFrame.NavigationService.Navigate(new SettingsPage());
         }
     }
 }
