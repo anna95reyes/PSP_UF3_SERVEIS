@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="300">
     <StackPanel Orientation="Horizontal">
-        <TextBlock x:Name="txtNom" Grid.Column="0" Text="NOM" Margin="5"/>
+        <TextBlock x:Name="txbNom" Grid.Column="0" Text="NOM" Margin="5"/>
         <TextBlock Text="-" Grid.Column="1" Margin="2 0" VerticalAlignment="Center"/>
-        <TextBlock x:Name="txtTelefon" Grid.Column="2" Text="TELEFON" Margin="5"/>
+        <TextBlock x:Name="txbTelefon" Grid.Column="2" Text="TELEFON" Margin="5"/>
     </StackPanel>
 </UserControl>

@@ -31,10 +31,6 @@ namespace AppTrucadesPerSockets
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            /*SettingsWindow window = new SettingsWindow();
-            window.Show();
-            window.Activate();*/
-
             _mainFrame.NavigationService.Navigate(new SettingsPage());
         }
     }

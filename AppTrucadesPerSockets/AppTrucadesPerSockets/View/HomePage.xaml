@@ -37,7 +37,8 @@
             </Grid>
             
         </Grid>
-        <ListView x:Name="lsvClients" Grid.Row="1" Grid.Column="0" Margin="10">
+        <ListView x:Name="lsvClients" Grid.Row="1" Grid.Column="0" Margin="10"
+                  SelectionChanged="lsvClients_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <local:UIClient ElClient="{Binding}"/>
@@ -45,8 +46,21 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button x:Name="btnDownload" Content="DOWNLOAD" Grid.Row="0" Grid.Column="10" Margin="10 5" 
+        <Button x:Name="btnDownload" Content="DOWNLOAD" Grid.Row="0" Grid.Column="1" Margin="10 5" 
                 Height="40" Width="120" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="btnDownload_Click"/>
 
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="txbData" Text="DATE: " Grid.Row="0" Margin="10"/>
+            <Border Grid.Row="1" Margin="10" BorderBrush="Black" BorderThickness="3">
+                <TextBox x:Name="txtTextEmail" Margin="10"/>
+            </Border>
+            <Button x:Name="btnDone" Content="DONE" Grid.Row="2" Click="btnDone_Click"
+                    Height="40" Width="120" HorizontalAlignment="Center"/>
+        </Grid>
     </Grid>
 </Page>

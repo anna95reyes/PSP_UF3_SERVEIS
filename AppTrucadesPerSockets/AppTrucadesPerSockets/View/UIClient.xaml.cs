@@ -45,8 +45,8 @@ namespace AppTrucadesPerSockets.View
         {
             if (ElClient != null)
             {
-                txtNom.Text = ElClient.Nom;
-                txtTelefon.Text = ElClient.Telefon;
+                txbNom.Text = ElClient.Nom;
+                txbTelefon.Text = ElClient.Telefon;
             }
 
         }

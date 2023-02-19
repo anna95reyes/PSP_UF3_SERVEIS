@@ -19,15 +19,31 @@ namespace AppTrucadesPerSockets.View
     /// </summary>
     public partial class HomePage : Page
     {
+
+        private Properties propietats;
+
         public HomePage()
         {
             InitializeComponent();
-            
+            propietats = new Properties();
+            txbData.Text = "DATE: " + DateTime.Now.ToString("yyyy-MM-dd");
+            txtUrl.Text = propietats.Url;
+
         }
 
         private void btnDownload_Click(object sender, RoutedEventArgs e)
         {
             lsvClients.ItemsSource = Client.getClients();
+        }
+
+        private void btnDone_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void lsvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppTrucadesPerSockets.Model;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,34 +22,39 @@ namespace AppTrucadesPerSockets.View
     /// </summary>
     public partial class SettingsPage : Page
     {
+
+        private Properties propietats;
+
         public SettingsPage()
         {
             InitializeComponent();
-
-
-            ObrirFitxerPropietats();
+            propietats = new Properties();
+            carregarPropietats();
         }
 
-        private void ObrirFitxerPropietats()
+        private void carregarPropietats()
         {
-            String path = AppDomain.CurrentDomain.BaseDirectory + @"..\..\..\Properties.txt";
-
-            if (!File.Exists(path))
-            {
-                throw new Exception("El fitxer de propietats no existeix");
-            }
-
-            txtFitxerPropietats.Text = path;
-
+            txtUrl.Text = propietats.Url;
+            txtHost.Text = propietats.Host;
+            txtUser.Text = propietats.User;
+            txtPassword.Text = propietats.Password;
+            txtMail.Text = propietats.Mail;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            carregarPropietats();
             this.NavigationService.Navigate(new HomePage());
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            propietats.modifySelectSingleNode("//properties/url", txtUrl.Text, propietats.Url);
+            propietats.modifySelectSingleNode("//properties/host", txtHost.Text, propietats.Host);
+            propietats.modifySelectSingleNode("//properties/user", txtUser.Text, propietats.User);
+            propietats.modifySelectSingleNode("//properties/password", txtPassword.Text, propietats.Password);
+            propietats.modifySelectSingleNode("//properties/mail", txtMail.Text, propietats.Mail);
+
             this.NavigationService.Navigate(new HomePage());
         }
 
