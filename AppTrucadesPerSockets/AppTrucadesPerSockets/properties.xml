@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <properties>
-  <url>http://localhost/web/clients.html</url>
-  <host>localhost</host>
+  <url>web/clients.html</url>
+  <host>127.0.0.1</host>
   <user>ftp</user>
   <password>ftp</password>
   <mail>prova@anna.cat</mail>
