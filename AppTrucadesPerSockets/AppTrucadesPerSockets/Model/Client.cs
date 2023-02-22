@@ -7,7 +7,7 @@ namespace AppTrucadesPerSockets.Model
 {
     public class Client
     {
-        private static ObservableCollection<Client> clients = new ObservableCollection<Client>();
+        private static ObservableCollection<Client> clients;
 
         private String nom;
         private String telefon;
@@ -27,10 +27,19 @@ namespace AppTrucadesPerSockets.Model
             return clients;
         }
 
+        public static void inicialitzaLlistaClients()
+        {
+            clients = new ObservableCollection<Client>();
+        }
 
         public static void addClient(Client c)
         {
             clients.Add(c);
+        }
+
+        public static void removeClient (Client c)
+        {
+            clients.Remove(c);
         }
 
         public override string ToString()

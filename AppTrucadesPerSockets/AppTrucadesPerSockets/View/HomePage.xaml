@@ -57,7 +57,7 @@
             </Grid.RowDefinitions>
             <TextBlock x:Name="txbData" Text="DATE: " Grid.Row="0" Margin="10"/>
             <Border Grid.Row="1" Margin="10" BorderBrush="Black" BorderThickness="3">
-                <TextBox x:Name="txtTextEmail" Margin="10"/>
+                <TextBox x:Name="txtTextEmail" Margin="10" TextChanged="txtTextEmail_TextChanged"/>
             </Border>
             <Button x:Name="btnDone" Content="DONE" Grid.Row="2" Click="btnDone_Click"
                     Height="40" Width="120" HorizontalAlignment="Center"/>

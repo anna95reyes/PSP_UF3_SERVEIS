@@ -33,6 +33,7 @@ namespace AppTrucadesPerSockets.View
             dataActual = DateTime.Now;
             txbData.Text = "DATE: " + dataActual.ToString("yyyy-MM-dd");
             txtUrl.Text = propietats.Host + "/" + propietats.Url;
+            btnDoneIsEnabled();
 
         }
 
@@ -51,7 +52,6 @@ namespace AppTrucadesPerSockets.View
             String line;
             ObservableCollection<String> tds = new ObservableCollection<String>();
             String nom = "";
-            String telefon = "";
 
             while ((line = sr.ReadLine()) != null)
             {
@@ -60,6 +60,10 @@ namespace AppTrucadesPerSockets.View
                     tds.Add(line);
                 }
             }
+
+            fs.Close();
+
+            Client.inicialitzaLlistaClients();
 
             for (int i = 0; i < tds.Count; i++)
             {
@@ -71,22 +75,59 @@ namespace AppTrucadesPerSockets.View
                 }
                 else
                 {
-                    telefon = td;
-                    Client.addClient(new Client(nom, telefon));
+                    Client.addClient(new Client(nom, td));
                     nom = "";
-                    telefon = "";
                 }
             }
         }
 
         private void btnDone_Click(object sender, RoutedEventArgs e)
         {
+            Client client = (Client)lsvClients.SelectedItem;
+            FTP ftp = new FTP();
+            String nameClientFile = client.Nom.Replace(" ", "_");
+            String fileName = dataActual.ToString("yyyy-MM-dd_HH-mm-ss") + "_" + nameClientFile + ".txt";
+            crearArxiu(fileName);
+            ftp.updloadFileFTP(fileName);
+            netejarFormulari(client);
+            eliminarArxiu(fileName);
+        }
 
+        private static void eliminarArxiu(string fileName)
+        {
+            File.Delete(fileName);
+        }
+
+        private void netejarFormulari(Client client)
+        {
+            txtTextEmail.Text = "";
+            Client.removeClient(client);
+            lsvClients.SelectedItem = null;
+        }
+
+        private void crearArxiu(string fileName)
+        {
+            FileStream fs = File.Open(fileName, FileMode.Create);
+            byte[] bytes = Encoding.UTF8.GetBytes(txtTextEmail.Text);
+
+            fs.Write(bytes, 0, bytes.Length);
+
+            fs.Close();
         }
 
         private void lsvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //txtTextEmail.Text = lsvClients.SelectedItem.ToString();
+            btnDoneIsEnabled();
+        }
+
+        private void txtTextEmail_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            btnDoneIsEnabled();
+        }
+
+        private void btnDoneIsEnabled()
+        {
+            btnDone.IsEnabled = lsvClients.SelectedItem != null && txtTextEmail.Text.Trim().Length > 0;
         }
     }
 }

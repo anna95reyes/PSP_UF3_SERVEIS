@@ -99,6 +99,7 @@ namespace AppTrucadesPerSockets.Model
             try
             {
                 using (FileStream stream = File.Open(fileName, FileMode.Create))
+
                 {
                     using (BinaryWriter writer = new BinaryWriter(stream, Encoding.UTF8, false))
                     {
@@ -111,6 +112,7 @@ namespace AppTrucadesPerSockets.Model
                             bytesRead = client.Receive(buffer);
                         }
                     }
+                    stream.Close();
                 }
                 return fileName;
             }
