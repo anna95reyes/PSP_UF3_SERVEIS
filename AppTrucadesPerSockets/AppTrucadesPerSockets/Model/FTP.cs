@@ -10,7 +10,7 @@ namespace AppTrucadesPerSockets.Model
     public class FTP
     {
         private Properties propietats;
-        private int port = 21;
+        private int port;
         private String s = "";
 
         public FTP()
@@ -23,37 +23,16 @@ namespace AppTrucadesPerSockets.Model
             // Connect to a remote device.
             try
             {
-                IPAddress ipAddress = IPAddress.Parse(propietats.Host);
+                port = int.Parse(propietats.Ftp_port);
+                IPAddress ipAddress = IPAddress.Parse(propietats.Ftp_host);
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
                 // Create a TCP/IP socket.
                 Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 client.Connect(remoteEP);
-
-                // Presentació
-                Receive(client);
-
-                // USER
-                s = Send_Order(client, "USER " + propietats.User + "\r\n");
-
-                // PASS 
-                s = Send_Order(client, "PASS " + propietats.Password + "\r\n");
-
-                // PWD
-                s = Send_Order(client, "PWD" + "\r\n");
-
-                // CWD
-                s = Send_Order(client, "CWD /share" + "\r\n");
-
-
-                // PASSV
-                s = Send_Order(client, "PASV " + "\r\n");
-                IPEndPoint passiveEP = passv();
-
-                // STOR
-                s = Send_Order(client, "STOR " + fileName + "\r\n");
-                runStor(fileName, passiveEP);
+                
+                ftp(fileName, client);
 
                 // Release the socket.
                 client.Shutdown(SocketShutdown.Both);
@@ -63,6 +42,33 @@ namespace AppTrucadesPerSockets.Model
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        private void ftp(string fileName, Socket client)
+        {
+            // Presentació
+            Receive(client);
+
+            // USER
+            s = Send_Order(client, "USER " + propietats.Ftp_user + "\r\n");
+
+            // PASS 
+            s = Send_Order(client, "PASS " + propietats.Ftp_password + "\r\n");
+
+            // PWD
+            s = Send_Order(client, "PWD" + "\r\n");
+
+            // CWD
+            s = Send_Order(client, "CWD /share" + "\r\n");
+
+
+            // PASSV
+            s = Send_Order(client, "PASV " + "\r\n");
+            IPEndPoint passiveEP = passv();
+
+            // STOR
+            s = Send_Order(client, "STOR " + fileName + "\r\n");
+            runStor(fileName, passiveEP);
         }
 
         private IPEndPoint passv()

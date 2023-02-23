@@ -1,8 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <properties>
-  <url>web/clients.html</url>
-  <host>127.0.0.1</host>
-  <user>ftp</user>
-  <password>ftp</password>
-  <mail>prova@anna.cat</mail>
+  <http>
+    <host>127.0.0.1</host>
+    <port>80</port>
+    <url>web/clients.html</url>
+  </http>
+  <ftp>
+    <host>127.0.0.1</host>
+    <port>21</port>
+    <user>ftp</user>
+    <password>ftp</password>
+  </ftp>
+  <smtp>
+    <host>127.0.0.1</host>
+    <port>25</port>
+    <mail_from>anna@reyes.cat</mail_from>
+    <mail_to>psp@reyes.cat</mail_to>
+  </smtp>
 </properties>

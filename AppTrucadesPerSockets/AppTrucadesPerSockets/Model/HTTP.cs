@@ -11,7 +11,7 @@ namespace AppTrucadesPerSockets.Model
     {
 
         private Properties propietats;
-        private int port = 80;
+        private int port;
 
         public HTTP()
         {
@@ -24,19 +24,15 @@ namespace AppTrucadesPerSockets.Model
 
             try
             {
-                IPAddress ipAddress = IPAddress.Parse(propietats.Host);
+                port = int.Parse(propietats.Http_port);
+                IPAddress ipAddress = IPAddress.Parse(propietats.Http_host);
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
                 // Create a TCP/IP socket.
                 Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 client.Connect(remoteEP);
-
-                // Send request
-                send_request(client, propietats.Host);
-
-                // Get response
-                fileName = get_response_binary(client);
+                fileName = http(client);
 
                 // Release the socket.
                 client.Shutdown(SocketShutdown.Both);
@@ -53,11 +49,22 @@ namespace AppTrucadesPerSockets.Model
 
         }
 
-        private void send_request(Socket client, string host)
+        private string http(Socket client)
+        {
+            string fileName;
+            // Send request
+            send_request(client);
+
+            // Get response
+            fileName = get_response_binary(client);
+            return fileName;
+        }
+
+        private void send_request(Socket client)
         {
             // Convert the string data to byte data using ASCII encoding.
 
-            String request = "GET " + "/" + propietats.Url + " HTTP/1.1\r\nHost: " + host + "\r\n\r\n";
+            String request = "GET " + "/" + propietats.Http_url + " HTTP/1.1\r\nHost: " + propietats.Http_host + "\r\n\r\n";
 
             byte[] byteData = Encoding.ASCII.GetBytes(request);
 

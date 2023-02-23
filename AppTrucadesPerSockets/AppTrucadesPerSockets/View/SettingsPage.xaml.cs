@@ -34,11 +34,19 @@ namespace AppTrucadesPerSockets.View
 
         private void carregarPropietats()
         {
-            txtUrl.Text = propietats.Url;
-            txtHost.Text = propietats.Host;
-            txtUser.Text = propietats.User;
-            txtPassword.Text = propietats.Password;
-            txtMail.Text = propietats.Mail;
+            txtHttpHost.Text = propietats.Http_host;
+            txtHttpPort.Text = propietats.Http_port;
+            txtHttpUrl.Text = propietats.Http_url;
+
+            txtFtpHost.Text = propietats.Ftp_host;
+            txtFtpPort.Text = propietats.Ftp_port;
+            txtFtpUser.Text = propietats.Ftp_user;
+            txtFtpPassword.Text = propietats.Ftp_password;
+
+            txtSmtpHost.Text = propietats.Smtp_host;
+            txtSmtpPort.Text = propietats.Smtp_port;
+            txtSmtpMailFrom.Text = propietats.Smtp_mail_from;
+            txtSmtpMailTo.Text = propietats.Smtp_mail_to;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -49,11 +57,19 @@ namespace AppTrucadesPerSockets.View
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            propietats.modifySelectSingleNode("//properties/url", txtUrl.Text, propietats.Url);
-            propietats.modifySelectSingleNode("//properties/host", txtHost.Text, propietats.Host);
-            propietats.modifySelectSingleNode("//properties/user", txtUser.Text, propietats.User);
-            propietats.modifySelectSingleNode("//properties/password", txtPassword.Text, propietats.Password);
-            propietats.modifySelectSingleNode("//properties/mail", txtMail.Text, propietats.Mail);
+            propietats.modifySelectSingleNode("//properties/http/host", txtHttpHost.Text, propietats.Http_host);
+            propietats.modifySelectSingleNode("//properties/http/port", txtHttpPort.Text, propietats.Http_port);
+            propietats.modifySelectSingleNode("//properties/http/url", txtHttpUrl.Text, propietats.Http_url);
+
+            propietats.modifySelectSingleNode("//properties/ftp/host", txtFtpHost.Text, propietats.Ftp_host);
+            propietats.modifySelectSingleNode("//properties/ftp/port", txtFtpPort.Text, propietats.Ftp_port);
+            propietats.modifySelectSingleNode("//properties/ftp/user", txtFtpUser.Text, propietats.Ftp_user);
+            propietats.modifySelectSingleNode("//properties/ftp/password", txtFtpPassword.Text, propietats.Ftp_password);
+
+            propietats.modifySelectSingleNode("//properties/smtp/host", txtSmtpHost.Text, propietats.Smtp_host);
+            propietats.modifySelectSingleNode("//properties/smtp/port", txtSmtpPort.Text, propietats.Smtp_port);
+            propietats.modifySelectSingleNode("//properties/smtp/mail_from", txtSmtpMailFrom.Text, propietats.Smtp_mail_from);
+            propietats.modifySelectSingleNode("//properties/smtp/mail_to", txtSmtpMailTo.Text, propietats.Smtp_mail_to);
 
             this.NavigationService.Navigate(new HomePage());
         }

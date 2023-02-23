@@ -32,7 +32,7 @@ namespace AppTrucadesPerSockets.View
             propietats = new Properties();
             dataActual = DateTime.Now;
             txbData.Text = "DATE: " + dataActual.ToString("yyyy-MM-dd");
-            txtUrl.Text = propietats.Host + "/" + propietats.Url;
+            txtUrl.Text = propietats.Http_host + "/" + propietats.Http_url;
             btnDoneIsEnabled();
 
         }
@@ -85,10 +85,13 @@ namespace AppTrucadesPerSockets.View
         {
             Client client = (Client)lsvClients.SelectedItem;
             FTP ftp = new FTP();
+            SMTP smtp = new SMTP();
             String nameClientFile = client.Nom.Replace(" ", "_");
             String fileName = dataActual.ToString("yyyy-MM-dd_HH-mm-ss") + "_" + nameClientFile + ".txt";
+            String subject = dataActual.ToString("dd-MM-yyyy HH:mm:ss") + " - " + client.Nom;
             crearArxiu(fileName);
             ftp.updloadFileFTP(fileName);
+            smtp.sendEmail(subject, txtTextEmail.Text);
             netejarFormulari(client);
             eliminarArxiu(fileName);
         }
