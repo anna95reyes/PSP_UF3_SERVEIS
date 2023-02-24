@@ -41,10 +41,12 @@ namespace AppTrucadesPerSockets.View
             txtFtpHost.Text = propietats.Ftp_host;
             txtFtpPort.Text = propietats.Ftp_port;
             txtFtpUser.Text = propietats.Ftp_user;
-            txtFtpPassword.Text = propietats.Ftp_password;
+            txtFtpPassword.Password = propietats.Ftp_password;
 
             txtSmtpHost.Text = propietats.Smtp_host;
             txtSmtpPort.Text = propietats.Smtp_port;
+            txtSmtpUser.Text = propietats.Smtp_user;
+            txtSmtpPassword.Password = propietats.Smtp_password;
             txtSmtpMailFrom.Text = propietats.Smtp_mail_from;
             txtSmtpMailTo.Text = propietats.Smtp_mail_to;
         }
@@ -64,15 +66,18 @@ namespace AppTrucadesPerSockets.View
             propietats.modifySelectSingleNode("//properties/ftp/host", txtFtpHost.Text, propietats.Ftp_host);
             propietats.modifySelectSingleNode("//properties/ftp/port", txtFtpPort.Text, propietats.Ftp_port);
             propietats.modifySelectSingleNode("//properties/ftp/user", txtFtpUser.Text, propietats.Ftp_user);
-            propietats.modifySelectSingleNode("//properties/ftp/password", txtFtpPassword.Text, propietats.Ftp_password);
+            propietats.modifySelectSingleNode("//properties/ftp/password", txtFtpPassword.Password, propietats.Ftp_password);
 
             propietats.modifySelectSingleNode("//properties/smtp/host", txtSmtpHost.Text, propietats.Smtp_host);
             propietats.modifySelectSingleNode("//properties/smtp/port", txtSmtpPort.Text, propietats.Smtp_port);
+            propietats.modifySelectSingleNode("//properties/smtp/user", txtSmtpUser.Text, propietats.Smtp_user);
+            propietats.modifySelectSingleNode("//properties/smtp/password", txtSmtpPassword.Password, propietats.Smtp_password);
             propietats.modifySelectSingleNode("//properties/smtp/mail_from", txtSmtpMailFrom.Text, propietats.Smtp_mail_from);
             propietats.modifySelectSingleNode("//properties/smtp/mail_to", txtSmtpMailTo.Text, propietats.Smtp_mail_to);
 
             this.NavigationService.Navigate(new HomePage());
         }
+
 
         
     }

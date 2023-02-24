@@ -14,6 +14,8 @@
   <smtp>
     <host>127.0.0.1</host>
     <port>25</port>
+    <user>admin</user>
+    <password>annaanna</password>
     <mail_from>anna@reyes.cat</mail_from>
     <mail_to>psp@reyes.cat</mail_to>
   </smtp>

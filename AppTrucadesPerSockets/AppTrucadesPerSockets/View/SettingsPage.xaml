@@ -36,6 +36,8 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Text="HTTP" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="15"/>
@@ -61,7 +63,7 @@
                 <TextBox x:Name="txtFtpUser" Grid.Row="7" Grid.Column="1" Margin="5"/>
 
                 <TextBlock Text="PASSWORD:" Grid.Row="8" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
-                <TextBox x:Name="txtFtpPassword" Grid.Row="8" Grid.Column="1" Margin="5"/>
+                <PasswordBox x:Name="txtFtpPassword" Grid.Row="8" Grid.Column="1" Margin="5"/>
 
 
                 <TextBlock Text="SMTP" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Margin="15"/>
@@ -72,11 +74,17 @@
                 <TextBlock Text="PORT:" Grid.Row="11" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
                 <TextBox x:Name="txtSmtpPort" Grid.Row="11" Grid.Column="1" Margin="5"/>
 
-                <TextBlock Text="MAIL FROM:" Grid.Row="12" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
-                <TextBox x:Name="txtSmtpMailFrom" Grid.Row="12" Grid.Column="1" Margin="5"/>
+                <TextBlock Text="USER:" Grid.Row="12" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
+                <TextBox x:Name="txtSmtpUser" Grid.Row="12" Grid.Column="1" Margin="5"/>
 
-                <TextBlock Text="MAIL TO:" Grid.Row="13" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
-                <TextBox x:Name="txtSmtpMailTo" Grid.Row="13" Grid.Column="1" Margin="5"/>
+                <TextBlock Text="PASSWORD:" Grid.Row="13" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
+                <PasswordBox x:Name="txtSmtpPassword" Grid.Row="13" Grid.Column="1" Margin="5"/>
+                
+                <TextBlock Text="MAIL FROM:" Grid.Row="14" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
+                <TextBox x:Name="txtSmtpMailFrom" Grid.Row="14" Grid.Column="1" Margin="5"/>
+
+                <TextBlock Text="MAIL TO:" Grid.Row="15" Grid.Column="0" HorizontalAlignment="Right" Margin="10 5"/>
+                <TextBox x:Name="txtSmtpMailTo" Grid.Row="15" Grid.Column="1" Margin="5"/>
 
 
             </Grid>

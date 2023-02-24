@@ -17,6 +17,8 @@ namespace AppTrucadesPerSockets.Model
         private String ftp_password;
         private String smtp_host;
         private String smtp_port;
+        private String smtp_user;
+        private String smtp_password;
         private String smtp_mail_from;
         private String smtp_mail_to;
 
@@ -41,6 +43,8 @@ namespace AppTrucadesPerSockets.Model
 
             Smtp_host = getSelectSingleNode("//properties/smtp/host");
             Smtp_port = getSelectSingleNode("//properties/smtp/port");
+            Smtp_user = getSelectSingleNode("//properties/smtp/user");
+            Smtp_password = getSelectSingleNode("//properties/smtp/password");
             Smtp_mail_from = getSelectSingleNode("//properties/smtp/mail_from");
             Smtp_mail_to = getSelectSingleNode("//properties/smtp/mail_to");
 
@@ -69,6 +73,8 @@ namespace AppTrucadesPerSockets.Model
         public string Ftp_password { get => ftp_password; set => ftp_password = value; }
         public string Smtp_host { get => smtp_host; set => smtp_host = value; }
         public string Smtp_port { get => smtp_port; set => smtp_port = value; }
+        public string Smtp_user { get => smtp_user; set => smtp_user = value; }
+        public string Smtp_password { get => smtp_password; set => smtp_password = value; }
         public string Smtp_mail_from { get => smtp_mail_from; set => smtp_mail_from = value; }
         public string Smtp_mail_to { get => smtp_mail_to; set => smtp_mail_to = value; }
         public string Path { get => path; set => path = value; }
